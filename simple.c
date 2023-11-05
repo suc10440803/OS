@@ -11,9 +11,12 @@ static int simple_init(void)
     
     //////////////////////
     ////<在此加入程式碼>////
-    /////////////////////
-    // printk(KERN_INFO "");  印出載入時的jiffies，使用％lu來表示，格式為"init_jiffies: XXXXXXXXXXX"，記得換行
-    // printk(KERN_INFO "");  印出系統定義的的HZ，使用％d來表示，格式為"HZ: XXX"，記得換行
+    ////////////////////
+    int my_hz = HZ;
+    long unsigned my_j = jiffies;
+
+    printk(KERN_INFO "init_jiffies: %lu \n", my_j); // 印出載入時的jiffies，使用％lu來表示，格式為"init_jiffies: XXXXXXXXXXX"，記得換行
+    printk(KERN_INFO "HZ: %d \n", my_hz); // 印出系統定義的的HZ，使用％d來表示，格式為"HZ: XXX"，記得換行
        return 0;
 }
 
@@ -23,7 +26,8 @@ static void simple_exit(void) {
     //////////////////////
     ////<在此加入程式碼>////
     /////////////////////>
-    //printk(KERN_INFO "");  印出移除時的jiffies，使用％lu來表示，格式為"exit_jiffies: XXXXXXXXXXX"，記得換行
+    long unsigned my_j_2 = jiffies;
+    printk(KERN_INFO "exit_jiffies: %lu \n", my_j_2); // 印出移除時的jiffies，使用％lu來表示，格式為"exit_jiffies: XXXXXXXXXXX"，記得換行
 	printk(KERN_INFO "Removing Module\n");
 }
 
